@@ -12,7 +12,7 @@ export interface Reciter extends ReciterData {
   photoSrc: string;
 }
 
-export interface Chapter extends ChapterData {
+export interface Recitation extends ChapterData {
   audioSrc: string;
   waveformSrc: string;
 }
