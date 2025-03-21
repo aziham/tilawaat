@@ -3,12 +3,12 @@ import type { ReciterData, Reciter } from '@/types';
 import fs from 'fs';
 import path from 'path';
 
-const recitersPath = path.join(process.cwd(), 'public/data/reciters.json');
-const recitersData: ReciterData[] = JSON.parse(
-  fs.readFileSync(recitersPath, 'utf8')
-);
-
 export async function GET() {
+  const recitersPath = path.join(process.cwd(), 'public/data/reciters.json');
+  const recitersData: ReciterData[] = JSON.parse(
+    fs.readFileSync(recitersPath, 'utf8')
+  );
+
   const reciters: Reciter[] = recitersData.map((reciter) => ({
     id: reciter.id,
     name: reciter.name,
