@@ -1,9 +1,8 @@
-import { NextResponse } from 'next/server';
 import type { ReciterData, Reciter } from '@/types';
 import fs from 'fs';
 import path from 'path';
 
-export async function GET() {
+async function getReciters() {
   const recitersPath = path.join(process.cwd(), 'public/data/reciters.json');
   const recitersData: ReciterData[] = JSON.parse(
     fs.readFileSync(recitersPath, 'utf8')
@@ -15,5 +14,7 @@ export async function GET() {
     photoSrc: `https://cdn.jsdelivr.net/gh/aziham/tilawaat-data/reciters/${reciter.id}/photo.jpg`
   }));
 
-  return NextResponse.json(reciters);
+  return reciters;
 }
+
+export default getReciters;
