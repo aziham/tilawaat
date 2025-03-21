@@ -16,3 +16,8 @@ export interface Recitation extends ChapterData {
   audioSrc: string;
   waveformSrc: string;
 }
+
+export interface ReciterProfile {
+  reciter: Reciter;
+  recitations: Recitation[];
+}
