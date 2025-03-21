@@ -1,12 +1,16 @@
-import { NextResponse } from 'next/server';
-import type { ReciterData, ChapterData, Reciter, Chapter } from '@/types';
+import type {
+  ReciterData,
+  ChapterData,
+  Reciter,
+  Recitation,
+  ReciterProfile
+} from '@/types';
 import fs from 'fs';
 import path from 'path';
 
-export async function GET(
-  request: Request,
-  { params }: { params: Promise<{ reciterId: string }> }
-) {
+async function getReciterProfile(
+  reciterId: string
+): Promise<ReciterProfile | null> {
   const recitersPath = path.join(process.cwd(), 'public/data/reciters.json');
   const chaptersPath = path.join(process.cwd(), 'public/data/chapters.json');
 
@@ -17,12 +21,9 @@ export async function GET(
     fs.readFileSync(chaptersPath, 'utf8')
   );
 
-  const { reciterId } = await params;
-
   const reciterData = recitersData.find((r: ReciterData) => r.id === reciterId);
 
-  if (!reciterData)
-    return NextResponse.json({ error: 'Reciter not found' }, { status: 404 });
+  if (!reciterData) return null;
 
   const reciter: Reciter = {
     id: reciterId,
@@ -30,8 +31,8 @@ export async function GET(
     photoSrc: `https://cdn.jsdelivr.net/gh/aziham/tilawaat-data/reciters/${reciterId}/photo.jpg`
   };
 
-  const chapters = chaptersData.map(
-    (chapter: ChapterData): Chapter => ({
+  const recitations = chaptersData.map(
+    (chapter: ChapterData): Recitation => ({
       id: chapter.id.replace(/^0/, ''),
       name: chapter.name,
       audioSrc: `https://download.quranicaudio.com/quran/${reciterId}/${chapter.id}.mp3`,
@@ -39,8 +40,10 @@ export async function GET(
     })
   );
 
-  return NextResponse.json({
+  return {
     reciter,
-    chapters
-  });
+    recitations
+  };
 }
+
+export default getReciterProfile;
