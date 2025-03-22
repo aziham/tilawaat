@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/styles/global.css';
 
+import RecitationProvider from '@/contexts/RecitationProvider';
+import Player from '@/components/Player';
+
 const inter = Inter({
   subsets: ['latin']
 });
@@ -12,7 +15,7 @@ export const metadata: Metadata = {
     'Tilawaat is a modern Quran player app that lets you listen to the Holy Quran with ease. Explore Surahs, choose from multiple reciters, and enjoy a seamless, immersive experience.'
 };
 
-export default function RootLayout({
+function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
@@ -20,7 +23,14 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <link rel='icon' href='#' type='image/x-icon' />
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <RecitationProvider>
+          {children}
+          <Player />
+        </RecitationProvider>
+      </body>
     </html>
   );
 }
+
+export default RootLayout;
