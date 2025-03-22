@@ -12,12 +12,20 @@ export interface Reciter extends ReciterData {
   photoSrc: string;
 }
 
-export interface Recitation extends ChapterData {
+export interface Chapter extends ChapterData {
   audioSrc: string;
   waveformSrc: string;
 }
 
 export interface ReciterProfile {
   reciter: Reciter;
-  recitations: Recitation[];
+  chapters: Chapter[];
+}
+
+export interface Recitation {
+  reciterName?: string;
+  chapterName?: string;
+  reciterPhotoSrc?: string;
+  audioSrc?: string;
+  waveformSrc?: string;
 }

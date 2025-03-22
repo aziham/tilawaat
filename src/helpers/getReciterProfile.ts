@@ -2,7 +2,7 @@ import type {
   ReciterData,
   ChapterData,
   Reciter,
-  Recitation,
+  Chapter,
   ReciterProfile
 } from '@/types';
 import fs from 'fs';
@@ -31,8 +31,8 @@ async function getReciterProfile(
     photoSrc: `https://cdn.jsdelivr.net/gh/aziham/tilawaat-data/reciters/${reciterId}/photo.jpg`
   };
 
-  const recitations = chaptersData.map(
-    (chapter: ChapterData): Recitation => ({
+  const chapters = chaptersData.map(
+    (chapter: ChapterData): Chapter => ({
       id: chapter.id.replace(/^0/, ''),
       name: chapter.name,
       audioSrc: `https://download.quranicaudio.com/quran/${reciterId}/${chapter.id}.mp3`,
@@ -42,7 +42,7 @@ async function getReciterProfile(
 
   return {
     reciter,
-    recitations
+    chapters
   };
 }
 
