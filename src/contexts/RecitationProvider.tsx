@@ -1,10 +1,14 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { Recitation } from '@/types';
+import fetchPeaks from '@/helpers/fetchPeaks';
+
+type Peaks = (Float32Array<ArrayBufferLike> | number[])[] | undefined;
 
 interface RecitationContextType extends Recitation {
   setRecitation: (recitation: Recitation) => void;
+  peaks: Peaks;
 }
 
 const RecitationContext = createContext<RecitationContextType | undefined>(
@@ -13,9 +17,19 @@ const RecitationContext = createContext<RecitationContextType | undefined>(
 
 function RecitationProvider({ children }: { children: React.ReactNode }) {
   const [recitation, setRecitation] = useState<Recitation | null>(null);
+  const [peaks, setPeaks] = useState<Peaks>(undefined);
+
+  useEffect(() => {
+    if (!recitation?.waveformSrc) {
+      setPeaks(undefined);
+      return;
+    }
+
+    fetchPeaks(recitation.waveformSrc).then(setPeaks);
+  }, [recitation]);
 
   return (
-    <RecitationContext.Provider value={{ ...recitation, setRecitation }}>
+    <RecitationContext.Provider value={{ ...recitation, setRecitation, peaks }}>
       {children}
     </RecitationContext.Provider>
   );
