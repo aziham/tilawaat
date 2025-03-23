@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { Recitation } from '@/types';
 import fetchPeaks from '@/helpers/fetchPeaks';
 
-type Peaks = (Float32Array<ArrayBufferLike> | number[])[] | undefined;
+export type Peaks = (Float32Array<ArrayBufferLike> | number[])[] | undefined;
 
 interface RecitationContextType extends Recitation {
   setRecitation: (recitation: Recitation) => void;

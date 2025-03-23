@@ -1,13 +1,18 @@
 'use client';
 
-import { createContext, useContext, useEffect, useRef } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import type WaveSurfer from 'wavesurfer.js';
+import type { Peaks } from '@/contexts/RecitationProvider';
 import { useWavesurfer } from '@wavesurfer/react';
 import { useRecitation } from '@/contexts/RecitationProvider';
-import WaveSurfer from 'wavesurfer.js';
+import formatTime from '@/helpers/formatTime';
 
 type PlayerContextType = {
-  wavesurfer: WaveSurfer | null;
+  media: HTMLMediaElement | null;
+  peaks: Peaks;
   isPlaying: boolean;
+  currentTime: string;
+  duration: string;
   playPause: () => void;
 };
 
@@ -16,14 +21,37 @@ const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
 function PlayerProvider({ children }: { children: React.ReactNode }) {
   const { audioSrc, peaks } = useRecitation();
 
+  const [media, setMedia] = useState<HTMLMediaElement | null>(null);
+  const [currentTime, setCurrentTime] = useState<string>('00:00');
+  const [duration, setDuration] = useState<string>('00:00');
+
   const containerRef = useRef<HTMLDivElement | null>(null);
   const instanceRef = useRef<WaveSurfer | null>(null);
 
-  const { wavesurfer, isPlaying } = useWavesurfer({
+  const { wavesurfer, isPlaying, isReady } = useWavesurfer({
     container: containerRef,
     url: audioSrc,
     peaks
   });
+
+  useEffect(() => {
+    if (!wavesurfer || !isReady) return;
+
+    setDuration(formatTime(wavesurfer.getDuration()));
+
+    setMedia(wavesurfer.getMediaElement());
+
+    const onAudioProcess = () => {
+      const currentTime = wavesurfer.getCurrentTime();
+      setCurrentTime(formatTime(currentTime));
+    };
+
+    wavesurfer.on('audioprocess', onAudioProcess);
+
+    return () => {
+      wavesurfer.un('audioprocess', onAudioProcess);
+    };
+  }, [wavesurfer, isReady]);
 
   useEffect(() => {
     if (!wavesurfer) return;
@@ -43,10 +71,12 @@ function PlayerProvider({ children }: { children: React.ReactNode }) {
     };
   }, [wavesurfer]);
 
-  const playPause = () => wavesurfer && wavesurfer.playPause();
+  const playPause = () => wavesurfer?.playPause();
 
   return (
-    <PlayerContext.Provider value={{ wavesurfer, isPlaying, playPause }}>
+    <PlayerContext.Provider
+      value={{ media, peaks, isPlaying, currentTime, duration, playPause }}
+    >
       {children}
       <div ref={containerRef} className='hidden' />
     </PlayerContext.Provider>
