@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useRef } from 'react';
+import { createContext, useContext, useEffect, useRef } from 'react';
 import { useWavesurfer } from '@wavesurfer/react';
 import { useRecitation } from '@/contexts/RecitationProvider';
 import WaveSurfer from 'wavesurfer.js';
@@ -16,20 +16,39 @@ const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
 function PlayerProvider({ children }: { children: React.ReactNode }) {
   const { audioSrc, peaks } = useRecitation();
 
-  const wavesurferRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const instanceRef = useRef<WaveSurfer | null>(null);
 
   const { wavesurfer, isPlaying } = useWavesurfer({
-    container: wavesurferRef,
+    container: containerRef,
     url: audioSrc,
     peaks
   });
+
+  useEffect(() => {
+    if (!wavesurfer) return;
+
+    // Cleanup previous instance before setting new one
+    if (instanceRef.current && instanceRef.current !== wavesurfer) {
+      instanceRef.current.destroy();
+    }
+
+    instanceRef.current = wavesurfer;
+
+    return () => {
+      if (instanceRef.current === wavesurfer) {
+        wavesurfer.destroy();
+        instanceRef.current = null;
+      }
+    };
+  }, [wavesurfer]);
 
   const playPause = () => wavesurfer && wavesurfer.playPause();
 
   return (
     <PlayerContext.Provider value={{ wavesurfer, isPlaying, playPause }}>
       {children}
-      <div ref={wavesurferRef} className='hidden' />
+      <div ref={containerRef} className='hidden' />
     </PlayerContext.Provider>
   );
 }
