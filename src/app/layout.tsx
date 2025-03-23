@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import '@/styles/global.css';
 
 import RecitationProvider from '@/contexts/RecitationProvider';
+import PlayerProvider from '@/contexts/PlayerProvider';
 import Player from '@/components/Player';
 
 const inter = Inter({
@@ -25,8 +26,10 @@ function RootLayout({
       <link rel='icon' href='#' type='image/x-icon' />
       <body className={`${inter.className} antialiased`}>
         <RecitationProvider>
-          {children}
-          <Player />
+          <PlayerProvider>
+            {children}
+            <Player />
+          </PlayerProvider>
         </RecitationProvider>
       </body>
     </html>
