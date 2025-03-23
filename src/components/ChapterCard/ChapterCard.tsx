@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ChevronRightCircle } from 'lucide-react';
 
-function SurahCard() {
+function ChapterCard() {
   return (
     <div
       role='button'
@@ -25,4 +25,4 @@ function SurahCard() {
   );
 }
 
-export default SurahCard;
+export default ChapterCard;
