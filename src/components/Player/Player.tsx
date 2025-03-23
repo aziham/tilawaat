@@ -1,8 +1,15 @@
 'use client';
 
-import ActionButton from '@/components/ActionButton';
-import PlayPauseButton from './PlayPauseButton';
-import PlaybackButton from './PlaybackButton';
+import Image from 'next/image';
+
+import {
+  ChevronDown,
+  EllipsisVertical,
+  Shuffle,
+  SkipBack,
+  SkipForward,
+  Repeat
+} from 'lucide-react';
 
 import {
   Sheet,
@@ -14,16 +21,23 @@ import {
   SheetClose
 } from '@/components/ui/sheet';
 
-import {
-  ChevronDown,
-  EllipsisVertical,
-  Shuffle,
-  SkipBack,
-  SkipForward,
-  Repeat
-} from 'lucide-react';
+import ActionButton from '@/components/ActionButton';
+import PlayPauseButton from './PlayPauseButton';
+import PlaybackButton from './PlaybackButton';
+import { getCssVariable } from '@/lib/utils';
+
+import WavesurferPlayer from '@wavesurfer/react';
+import { useRecitation } from '@/contexts/RecitationProvider';
+import { usePlayer } from '@/contexts/PlayerProvider';
 
 function Player() {
+  const { reciterName, chapterName, reciterPhotoSrc } = useRecitation();
+
+  const { media, peaks, isPlaying, currentTime, duration, playPause } =
+    usePlayer();
+
+  if (!media || !reciterPhotoSrc) return;
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -33,20 +47,24 @@ function Player() {
           className='bg-slate-300 fixed bottom-0 w-full flex justify-between items-center rounded-t-xl pt-3 px-4 pb-4 pointer-events-auto cursor-pointer'
         >
           <div className='flex items-center gap-3'>
-            <div className='h-[60px] w-[60px] bg-slate-500 rounded-sm'>
-              <span className='sr-only'>Reciter Photo</span>
-            </div>
+            <Image
+              src={reciterPhotoSrc}
+              alt={`Reciter ${reciterName} photo`}
+              width={60}
+              height={60}
+              className='rounded-sm'
+            />
             <div className='flex flex-col gap-1'>
-              <h1 className='text-sm font-medium'>Surah Name</h1>
-              <h2 className='text-muted-foreground text-xs'>Reciter Name</h2>
+              <h1 className='text-sm font-medium'>{chapterName}</h1>
+              <h2 className='text-muted-foreground text-xs'>{reciterName}</h2>
             </div>
           </div>
           <PlayPauseButton
             size='mini'
-            isPlaying
+            isPlaying={isPlaying}
             onClick={(e) => {
               e.stopPropagation();
-              console.log('play/pause');
+              playPause();
             }}
           />
         </div>
@@ -64,24 +82,42 @@ function Player() {
         </SheetHeader>
 
         <div className='mx-4 flex flex-col gap-5'>
-          <div className='h-[400px] bg-slate-500 rounded-3xl'>
-            <span className='sr-only'>Reciter Photo</span>
-          </div>
+          <Image
+            src={reciterPhotoSrc!}
+            alt={`Reciter ${reciterName} photo`}
+            width={400}
+            height={400}
+            className='rounded-3xl'
+          />
           <div className='flex flex-col items-center gap-1'>
-            <h1 className='text-2xl font-medium'>Surah Name</h1>
-            <h2 className='text-muted-foreground text-base'>Reciter Name</h2>
+            <h1 className='text-2xl font-medium'>{chapterName}</h1>
+            <h2 className='text-muted-foreground text-base'>{reciterName}</h2>
           </div>
-          <div className=''>
-            <div className='w-full bg-slate-300 h-15 mb-3'></div>
-            <div className='flex justify-between'>
-              <div>02:36</div>
-              <div>04:52</div>
+          <div>
+            <WavesurferPlayer
+              media={media}
+              peaks={peaks}
+              waveColor={getCssVariable('--color-slate-300') || '#ff0000'}
+              progressColor={getCssVariable('--color-slate-500')}
+              height={60}
+              barGap={2}
+              barWidth={4}
+              barRadius={16}
+              dragToSeek
+            />
+            <div className='mt-2 flex justify-between'>
+              <div>{currentTime}</div>
+              <div>{duration}</div>
             </div>
           </div>
-          <div className='flex justify-between items-center'>
+          <div className='flex flex-row justify-between items-center'>
             <PlaybackButton icon={Shuffle} />
             <PlaybackButton icon={SkipBack} />
-            <PlayPauseButton size='full' isPlaying={false} />
+            <PlayPauseButton
+              size='full'
+              isPlaying={isPlaying}
+              onClick={playPause}
+            />
             <PlaybackButton icon={SkipForward} />
             <PlaybackButton icon={Repeat} />
           </div>
