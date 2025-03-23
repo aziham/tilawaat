@@ -25,8 +25,16 @@ function RecitationProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    fetchPeaks(recitation.waveformSrc).then(setPeaks);
-  }, [recitation]);
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    (async () => {
+      const peaks = await fetchPeaks(recitation.waveformSrc!, signal);
+      if (peaks) setPeaks(peaks);
+    })();
+
+    return () => controller.abort();
+  }, [recitation?.waveformSrc]);
 
   return (
     <RecitationContext.Provider value={{ ...recitation, setRecitation, peaks }}>
