@@ -19,16 +19,16 @@ import {
   SheetTrigger,
   SheetFooter,
   SheetClose
-} from '@/components/ui/sheet';
+} from '@/shared/components/ui/sheet';
 
-import ActionButton from '@/components/ActionButton';
-import PlayPauseButton from './PlayPauseButton';
-import PlaybackButton from './PlaybackButton';
-import { getCssVariable } from '@/lib/utils';
+import ActionButton from '@/shared/components/action-button';
+import PlayPauseButton from './play-pause-button';
+import PlaybackButton from './playback-button';
+import { getCssVariable } from '@/shared/utils/get-css-variable';
 
 import WavesurferPlayer from '@wavesurfer/react';
-import { useRecitation } from '@/contexts/RecitationProvider';
-import { usePlayer } from '@/contexts/PlayerProvider';
+import { useRecitation } from '@/shared/stores/recitation-provider';
+import { usePlayer } from '@/features/player/stores/player-provider';
 
 function Player() {
   const { reciterName, chapterName, reciterPhotoSrc } = useRecitation();

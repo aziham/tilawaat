@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@/styles/global.css';
+import '@/shared/styles/globals.css';
 
-import RecitationProvider from '@/contexts/RecitationProvider';
-import PlayerProvider from '@/contexts/PlayerProvider';
-import Player from '@/components/Player';
+import RecitationProvider from '@/shared/stores/recitation-provider';
+import PlayerProvider from '@/features/player/stores/player-provider';
+import Player from '@/features/player/components';
 
 const inter = Inter({
   subsets: ['latin']

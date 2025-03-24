@@ -1,8 +1,8 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { Recitation } from '@/types';
-import fetchPeaks from '@/helpers/fetchPeaks';
+import { Recitation } from '@/shared/types';
+import fetchPeaks from '@/shared/helpers/fetch-peaks';
 
 export type Peaks = (Float32Array<ArrayBufferLike> | number[])[] | undefined;
 

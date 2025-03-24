@@ -1,4 +1,4 @@
-import type { ReciterData, Reciter } from '@/types';
+import type { ReciterData, Reciter } from '@/shared/types';
 import fs from 'fs';
 import path from 'path';
 

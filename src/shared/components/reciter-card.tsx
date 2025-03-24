@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import type { Reciter } from '@/types';
+import type { Reciter } from '@/shared/types';
 import { ChevronRight } from 'lucide-react';
 
 type ReciterCardProps = {

@@ -2,10 +2,9 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import type WaveSurfer from 'wavesurfer.js';
-import type { Peaks } from '@/contexts/RecitationProvider';
+import { useRecitation, type Peaks } from '@/shared/stores/recitation-provider';
 import { useWavesurfer } from '@wavesurfer/react';
-import { useRecitation } from '@/contexts/RecitationProvider';
-import formatTime from '@/helpers/formatTime';
+import formatTime from '@/features/player/utils/format-time';
 
 type PlayerContextType = {
   media: HTMLMediaElement | null;

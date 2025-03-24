@@ -1,8 +1,8 @@
 'use client';
 
-import { Reciter, Chapter } from '@/types';
+import { Reciter, Chapter } from '@/shared/types';
 import { ChevronRightCircle } from 'lucide-react';
-import { useRecitation } from '@/contexts/RecitationProvider';
+import { useRecitation } from '@/shared/stores/recitation-provider';
 
 type ChapterCardProps = {
   reciter: Reciter;

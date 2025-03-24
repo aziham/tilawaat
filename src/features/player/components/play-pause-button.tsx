@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/shared/components/ui/button';
 import { Play, Pause } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 
 type PlayPauseButtonProps = {
   isPlaying: boolean;
