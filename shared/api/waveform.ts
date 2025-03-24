@@ -1,9 +1,9 @@
-async function fetchPeaks(waveformSrc: string, signal: AbortSignal) {
+export async function getWaveform(waveformSrc: string, signal: AbortSignal) {
   try {
     const res = await fetch(waveformSrc, { signal });
     if (!res.ok) throw new Error('Failed to fetch waveform data');
-    const peaks = await res.json();
-    return peaks.data || undefined;
+    const waveform = await res.json();
+    return waveform.data || undefined;
   } catch (error) {
     if (error instanceof Error && error.name === 'AbortError') {
       console.info(
@@ -15,5 +15,3 @@ async function fetchPeaks(waveformSrc: string, signal: AbortSignal) {
     return undefined;
   }
 }
-
-export default fetchPeaks;
