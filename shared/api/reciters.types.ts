@@ -1,5 +1,5 @@
 export type Reciter = {
-  id: string;
+  handle: string;
   name: string;
   photoSrc?: string;
 };

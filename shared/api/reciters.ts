@@ -10,9 +10,9 @@ export async function getReciters() {
   );
 
   const reciters: Reciter[] = recitersData.map((reciter) => ({
-    id: reciter.id,
+    handle: reciter.handle,
     name: reciter.name,
-    photoSrc: `https://cdn.jsdelivr.net/gh/aziham/tilawaat-data/reciters/${reciter.id}/photo.jpg`
+    photoSrc: `https://cdn.jsdelivr.net/gh/aziham/tilawaat-data/reciters/${reciter.handle}/photo.jpg`
   }));
 
   return reciters;
