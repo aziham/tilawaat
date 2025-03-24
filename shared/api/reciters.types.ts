@@ -1,5 +1,5 @@
-export type Reciter = {
+export interface Reciter {
   handle: string;
   name: string;
   photoSrc?: string;
-};
+}
