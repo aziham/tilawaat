@@ -11,8 +11,8 @@ import path from 'path';
 async function getReciterProfile(
   reciterId: string
 ): Promise<ReciterProfile | null> {
-  const recitersPath = path.join(process.cwd(), 'public/data/reciters.json');
-  const chaptersPath = path.join(process.cwd(), 'public/data/chapters.json');
+  const recitersPath = path.join(process.cwd(), 'shared/data/reciters.json');
+  const chaptersPath = path.join(process.cwd(), 'shared/data/chapters.json');
 
   const recitersData: ReciterData[] = JSON.parse(
     fs.readFileSync(recitersPath, 'utf8')

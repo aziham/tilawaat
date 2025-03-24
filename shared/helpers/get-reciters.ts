@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 async function getReciters() {
-  const recitersPath = path.join(process.cwd(), 'public/data/reciters.json');
+  const recitersPath = path.join(process.cwd(), 'shared/data/reciters.json');
   const recitersData: ReciterData[] = JSON.parse(
     fs.readFileSync(recitersPath, 'utf8')
   );
