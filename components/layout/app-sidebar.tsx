@@ -1,11 +1,11 @@
-import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
+import { Compass, Home, Library, Search, Settings } from 'lucide-react';
 
 import {
   Sidebar,
+  SidebarHeader,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem
@@ -18,14 +18,14 @@ const menuItems = [
     icon: Home
   },
   {
-    title: 'Inbox',
+    title: 'Explore',
     url: '#',
-    icon: Inbox
+    icon: Compass
   },
   {
-    title: 'Calendar',
+    title: 'Library',
     url: '#',
-    icon: Calendar
+    icon: Library
   },
   {
     title: 'Search',
@@ -42,9 +42,9 @@ const menuItems = [
 export function AppSidebar() {
   return (
     <Sidebar>
+      <SidebarHeader className='ml-2 mt-3'>Tilawaat Logo</SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
