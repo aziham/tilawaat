@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import { Providers } from './providers';
 import { SidebarInset } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/layout/sidebar';
+import { AppHeader } from '@/components/layout/header';
 
 const inter = Inter({
   subsets: ['latin']
@@ -26,7 +27,10 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <Providers>
           <AppSidebar />
-          <SidebarInset>{children}</SidebarInset>
+          <SidebarInset>
+            <AppHeader />
+            {children}
+          </SidebarInset>
         </Providers>
       </body>
     </html>
