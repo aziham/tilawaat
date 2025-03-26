@@ -1,3 +1,5 @@
+'use client';
+
 import { Compass, Home, Library, Search, Settings } from 'lucide-react';
 
 import {
@@ -10,6 +12,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar';
+
+import { AppSidebarTrigger } from './app-sidebar-trigger';
+
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const menuItems = [
   {
@@ -40,9 +46,25 @@ const menuItems = [
 ];
 
 export function AppSidebar() {
+  const isMobile = useIsMobile();
+
   return (
-    <Sidebar>
-      <SidebarHeader className='ml-2 mt-3'>Tilawaat Logo</SidebarHeader>
+    <Sidebar collapsible='icon'>
+      <SidebarHeader className='h-16 border-b flex flex-row items-center -ml-2'>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              className='hover:bg-transparent active:bg-transparent'
+              asChild
+            >
+              <div>
+                <AppSidebarTrigger isMobileSidebar={isMobile} />
+                <span>Tilawaat Logo</span>
+              </div>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
