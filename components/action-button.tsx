@@ -1,4 +1,4 @@
-import { Button } from '@/shared/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { LucideIcon } from 'lucide-react';
 
 type ActionButtonProps = {

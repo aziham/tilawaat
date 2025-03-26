@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import type WaveSurfer from 'wavesurfer.js';
-import { useRecitation, type Peaks } from '@/shared/stores/recitation-provider';
+import { useRecitation, type Peaks } from '@/stores/recitation-provider';
 import { useWavesurfer } from '@wavesurfer/react';
 import formatTime from '@/features/player/utils/format-time';
 

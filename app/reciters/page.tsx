@@ -1,4 +1,4 @@
-import ReciterCard from '@/shared/components/reciter-card';
+import ReciterCard from '@/components/reciter-card';
 import getReciters from '@/shared/helpers/get-reciters';
 
 async function RecitersPage() {

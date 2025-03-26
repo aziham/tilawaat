@@ -2,7 +2,7 @@
 
 import { Reciter, Chapter } from '@/shared/types';
 import { ChevronRightCircle } from 'lucide-react';
-import { useRecitation } from '@/shared/stores/recitation-provider';
+import { useRecitation } from '@/stores/recitation-provider';
 
 type ChapterCardProps = {
   reciter: Reciter;

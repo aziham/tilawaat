@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import ChapterCard from '@/shared/components/chapter-card';
-import ActionButton from '@/shared/components/action-button';
-import { Separator } from '@/shared/components/ui/separator';
-import { Button } from '@/shared/components/ui/button';
+import ChapterCard from '@/components/chapter-card';
+import ActionButton from '@/components/action-button';
+import { Separator } from '@/components/ui/separator';
+import { Button } from '@/components/ui/button';
 import { ArrowLeft, Shuffle, PlayCircle } from 'lucide-react';
 import getReciterProfile from '@/shared/helpers/get-reciter-profile';
 

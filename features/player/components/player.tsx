@@ -19,15 +19,15 @@ import {
   SheetTrigger,
   SheetFooter,
   SheetClose
-} from '@/shared/components/ui/sheet';
+} from '@/components/ui/sheet';
 
-import ActionButton from '@/shared/components/action-button';
+import ActionButton from '@/components/action-button';
 import PlayPauseButton from './play-pause-button';
 import PlaybackButton from './playback-button';
-import { getCssVariable } from '@/shared/utils/get-css-variable';
+import { getCssVariable } from '@/utils/get-css-variable';
 
 import WavesurferPlayer from '@wavesurfer/react';
-import { useRecitation } from '@/shared/stores/recitation-provider';
+import { useRecitation } from '@/stores/recitation-provider';
 import { usePlayer } from '@/features/player/stores/player-provider';
 
 function Player() {
