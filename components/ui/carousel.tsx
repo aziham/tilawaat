@@ -4,6 +4,7 @@ import * as React from 'react';
 import useEmblaCarousel, {
   type UseEmblaCarouselType
 } from 'embla-carousel-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -178,13 +179,14 @@ function CarouselPrevious({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { scrollPrev, canScrollPrev } = useCarousel();
+  const isMobile = useIsMobile();
 
   return (
     <Button
       data-slot='carousel-previous'
       variant={variant}
       size={size}
-      className={cn(className)}
+      className={cn(className, 'rounded-full', isMobile && 'size-7')}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
@@ -202,13 +204,14 @@ function CarouselNext({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { scrollNext, canScrollNext } = useCarousel();
+  const isMobile = useIsMobile();
 
   return (
     <Button
       data-slot='carousel-next'
       variant={variant}
       size={size}
-      className={cn(className)}
+      className={cn(className, 'rounded-full', isMobile && 'size-7')}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
