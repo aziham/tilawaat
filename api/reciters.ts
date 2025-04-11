@@ -1,27 +1,23 @@
-import fs from 'fs';
-import path from 'path';
-import type { Reciter } from './reciters.types';
-
-const PATH = 'src/shared/data/reciters.json';
+import type { ReciterResponse, Reciter } from './reciters.types';
+import { fetcher, BASE_URL } from './fetch';
 
 export async function getReciters() {
-  const recitersData: Reciter[] = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), PATH), 'utf8')
+  const recitersData = await fetcher<ReciterResponse[]>(
+    'endpoint/reciters.json'
   );
 
   const reciters: Reciter[] = recitersData.map((reciter) => ({
-    handle: reciter.handle,
-    name: reciter.name,
-    photoSrc: `https://cdn.jsdelivr.net/gh/aziham/tilawaat-data/reciters/${reciter.handle}/photo.jpg`
+    ...reciter,
+    photoSrc: `${BASE_URL}/data/reciters/${reciter.id}/photo.jpg`
   }));
 
   return reciters;
 }
 
-export async function getReciter(handle: string) {
+export async function getReciter(id: number) {
   const reciters = await getReciters();
 
-  const reciter = reciters.find((reciter) => reciter.handle === handle);
+  const reciter = reciters.find((reciter) => reciter.id === id);
 
   return reciter;
 }
