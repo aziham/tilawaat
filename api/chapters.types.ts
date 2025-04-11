@@ -1,4 +1,5 @@
 export interface Chapter {
-  id: string;
+  id: number;
   name: string;
+  type: number;
 }
