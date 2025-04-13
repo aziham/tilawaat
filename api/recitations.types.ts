@@ -6,8 +6,6 @@ export interface MushafResponse {
 }
 
 export interface Recitations {
-  narrationName: string;
-  chapterNames: string[];
   audioSources: string[];
   waveformSources: string[];
 }

@@ -1,7 +1,5 @@
 import type { MushafResponse, Recitations } from './recitations.types';
 import { fetcher, BASE_URL } from './fetch';
-import { getNarrationName } from './narrations';
-import { getChapterNames } from './chapters';
 
 async function getMasahif() {
   const masahifData = await fetcher<MushafResponse[]>('endpoint/masahif.json');
@@ -38,14 +36,7 @@ export async function getRecitations(reciterId: number) {
 
   if (!mushaf) throw new Error(`Mushaf with id ${reciterId} not found`);
 
-  const [narrationName, chapterNames] = await Promise.all([
-    getNarrationName(mushaf.narration_id),
-    getChapterNames(mushaf.available_chapters)
-  ]);
-
   const recitations: Recitations = {
-    narrationName,
-    chapterNames,
     audioSources: generateAudioSources(
       mushaf.server,
       mushaf.available_chapters
