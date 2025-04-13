@@ -1,9 +1,13 @@
-import { Reciter } from './reciters.types';
-import { Chapter } from './chapters.types';
+export interface MushafResponse {
+  id: number;
+  narration_id: number;
+  server: string;
+  available_chapters: number[];
+}
 
-export interface Recitation {
-  reciter: Reciter;
-  chapter: Chapter;
-  audioSrc: string;
-  waveformSrc: string;
+export interface Recitations {
+  narrationName: string;
+  chapterNames: string[];
+  audioSources: string[];
+  waveformSources: string[];
 }
