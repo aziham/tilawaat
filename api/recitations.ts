@@ -1,4 +1,8 @@
-import type { MushafResponse, Recitations } from './recitations.types';
+import type {
+  MushafResponse,
+  Recitations,
+  FeaturedRecitationsResponse
+} from './recitations.types';
 import { fetcher, BASE_URL } from './fetch';
 
 async function getMasahif() {
@@ -49,3 +53,6 @@ export async function getRecitations(reciterId: number) {
 
   return recitations;
 }
+
+export const getFeaturedRecitations = () =>
+  fetcher<FeaturedRecitationsResponse[]>('endpoint/featured-recitations.json');
