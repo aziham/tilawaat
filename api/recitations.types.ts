@@ -1,4 +1,4 @@
-export interface MushafResponse {
+export interface Mushaf {
   id: number;
   narration_id: number;
   server: string;
@@ -10,7 +10,7 @@ export interface Recitations {
   waveformSources: string[];
 }
 
-export interface FeaturedRecitationsResponse {
+export interface FeaturedRecitations {
   id: number;
   reciter: {
     name: string;

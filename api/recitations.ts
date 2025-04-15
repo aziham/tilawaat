@@ -1,12 +1,12 @@
 import type {
-  MushafResponse,
+  Mushaf,
   Recitations,
-  FeaturedRecitationsResponse
+  FeaturedRecitations
 } from './recitations.types';
 import { fetcher, BASE_URL } from './fetch';
 
 async function getMasahif() {
-  const masahifData = await fetcher<MushafResponse[]>('endpoint/masahif.json');
+  const masahifData = await fetcher<Mushaf[]>('endpoint/masahif.json');
 
   return masahifData;
 }
@@ -55,4 +55,4 @@ export async function getRecitations(reciterId: number) {
 }
 
 export const getFeaturedRecitations = () =>
-  fetcher<FeaturedRecitationsResponse[]>('endpoint/featured-recitations.json');
+  fetcher<FeaturedRecitations[]>('endpoint/featured-recitations.json');
