@@ -10,7 +10,7 @@ export interface Recitations {
   waveformSources: string[];
 }
 
-export interface FeaturedRecitations {
+export interface FeaturedRecitation {
   id: number;
   reciter: {
     name: string;

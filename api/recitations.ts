@@ -1,7 +1,7 @@
 import type {
   Mushaf,
   Recitations,
-  FeaturedRecitations
+  FeaturedRecitation
 } from './recitations.types';
 import { fetcher, BASE_URL } from './fetch';
 
@@ -55,4 +55,4 @@ export async function getRecitations(reciterId: number) {
 }
 
 export const getFeaturedRecitations = () =>
-  fetcher<FeaturedRecitations[]>('endpoint/featured-recitations.json');
+  fetcher<FeaturedRecitation[]>('endpoint/featured-recitations.json');
