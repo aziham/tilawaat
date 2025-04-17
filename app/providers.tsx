@@ -11,7 +11,7 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <SidebarProvider>{children}</SidebarProvider>;
+      <SidebarProvider>{children}</SidebarProvider>
     </QueryClientProvider>
   );
 }
