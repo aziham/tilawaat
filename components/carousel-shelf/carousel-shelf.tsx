@@ -10,7 +10,7 @@ import {
   CarouselPrevious
 } from '@/components/ui/carousel';
 
-import { useIsMobile } from '@/hooks/use-mobile';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 interface CarouselShelfProps<T> {
   title: string;
@@ -27,7 +27,10 @@ export function CarouselShelf<T>({
   action,
   className
 }: CarouselShelfProps<T>) {
-  const isMobile = useIsMobile();
+  const wheelPlugin = React.useMemo(
+    () => WheelGesturesPlugin({ forceWheelAxis: 'x' }),
+    []
+  );
 
   return (
     <section className={className}>
@@ -36,6 +39,7 @@ export function CarouselShelf<T>({
           align: 'start',
           dragFree: true
         }}
+        plugins={[wheelPlugin]}
         className='w-full'
       >
         <div className='mx-5 my-3 flex justify-between items-center'>
@@ -52,7 +56,7 @@ export function CarouselShelf<T>({
           {items.map((item: T, index: number) => (
             <CarouselItem
               key={index}
-              className='pl-3 basis-1/3 md:basis-1/4 lg:basis-1/6 last:mr-30 md:last:mr-20'
+              className='pl-3 not-first:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/6 last:mr-30 md:last:mr-20'
             >
               {renderItem(item)}
             </CarouselItem>
@@ -61,17 +65,4 @@ export function CarouselShelf<T>({
       </Carousel>
     </section>
   );
-}
-
-{
-  /* <div className='rounded-full border px-3 pt-1 pb-2 flex justify-center items-center text-xs font-medium'>
-More
-</div>
-
-
-<Card>
-  <CardContent className='flex items-center justify-center p-0 h-24'>
-    <span className='text-2xl font-semibold'>{index + 1}</span>
-  </CardContent>
-</Card>; */
 }
