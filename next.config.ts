@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.jsdelivr.net'
+        hostname: 'raw.githubusercontent.com'
       }
     ]
   },

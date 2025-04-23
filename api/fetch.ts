@@ -1,4 +1,4 @@
-export const BASE_URL = `https://cdn.jsdelivr.net/gh/aziham/tilawaat-api`;
+export const BASE_URL = `https://raw.githubusercontent.com/aziham/tilawaat-api/refs/heads/main`;
 
 export async function fetcher<T>(endpoint: string): Promise<T> {
   const response = await fetch(`${BASE_URL}/${endpoint}`);
