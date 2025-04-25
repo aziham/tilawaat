@@ -8,5 +8,5 @@ export interface Reciter {
   id: number;
   name: string;
   letter: string;
-  photoSrc?: string;
+  photoSrc: string;
 }
