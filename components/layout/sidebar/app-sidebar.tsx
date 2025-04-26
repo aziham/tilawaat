@@ -20,7 +20,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 const menuItems = [
   {
     title: 'Home',
-    url: '#',
+    url: '/',
     icon: Home
   },
   {
