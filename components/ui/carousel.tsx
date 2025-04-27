@@ -186,7 +186,11 @@ function CarouselPrevious({
       data-slot='carousel-previous'
       variant={variant}
       size={size}
-      className={cn(className, 'rounded-full', isMobile && 'size-7')}
+      className={cn(
+        className,
+        'rounded-full hover:cursor-pointer',
+        isMobile && 'size-7'
+      )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
@@ -211,7 +215,11 @@ function CarouselNext({
       data-slot='carousel-next'
       variant={variant}
       size={size}
-      className={cn(className, 'rounded-full', isMobile && 'size-7')}
+      className={cn(
+        className,
+        'rounded-full hover:cursor-pointer',
+        isMobile && 'size-7'
+      )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
