@@ -52,7 +52,7 @@ export function CarouselShelf<T>({
             </div>
           </div>
         </div>
-        <CarouselContent className='ml-2 -mr-25 md:-mr-15'>
+        <CarouselContent className='ml-2 mt-2 -mr-25 md:-mr-15'>
           {items.map((item: T, index: number) => (
             <CarouselItem
               key={index}
