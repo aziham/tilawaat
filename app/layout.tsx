@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <Providers>
           <AppSidebar />
-          <SidebarInset>
+          <SidebarInset className='overflow-hidden'>
             <AppHeader />
             {children}
           </SidebarInset>
