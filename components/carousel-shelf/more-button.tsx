@@ -8,7 +8,7 @@ interface MoreButtonProps {
 
 export function MoreButton({ url, label = 'More' }: MoreButtonProps) {
   return (
-    <Button variant='ghost' asChild>
+    <Button variant='outline' className='rounded-3xl text-xs py-0' asChild>
       <Link href={url}>{label}</Link>
     </Button>
   );
