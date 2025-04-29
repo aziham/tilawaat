@@ -56,7 +56,7 @@ export function CarouselShelf<T>({
           {items.map((item: T, index: number) => (
             <CarouselItem
               key={index}
-              className='pl-3 not-first:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/6 last:mr-30 md:last:mr-20'
+              className='pl-3 not-first:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/7 last:mr-30 md:last:mr-20'
             >
               {renderItem(item)}
             </CarouselItem>
