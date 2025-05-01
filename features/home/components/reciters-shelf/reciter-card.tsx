@@ -3,16 +3,17 @@ import type { Reciter } from '@/api/reciters.types';
 
 export function ReciterCard(reciter: Reciter) {
   return (
-    <div className='hover:cursor-pointer'>
+    <div className='hover:cursor-pointer w-fit'>
       <Image
         src={reciter.photoSrc}
         alt={`Reciter ${reciter.name} photo`}
-        width={300}
-        height={300}
+        width={200}
+        height={200}
         className='rounded-full'
       />
       <div className='mt-2'>
         <h2 className='font-medium'>{reciter.name}</h2>
+        <h3 className='text-muted-foreground text-xs md:text-sm'>Reciter</h3>
       </div>
     </div>
   );
