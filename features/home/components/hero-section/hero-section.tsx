@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export function HeroSection() {
   return (
-    <section className='flex items-center justify-center relative h-[40dvh] md:h-[45dvh] bg-gradient-to-b from-teal-600 via-teal-700  to-teal-900 mb-2'>
+    <section className='flex items-center justify-center relative h-[40dvh] md:h-[45dvh] bg-gradient-to-b from-teal-600 via-teal-700  to-teal-900 mb-5'>
       <div className='absolute bg-[url(/hero/pattern.png)] w-full h-full mix-blend-plus-lighter' />
       <Image
         src='/hero/mosque-portal.png'

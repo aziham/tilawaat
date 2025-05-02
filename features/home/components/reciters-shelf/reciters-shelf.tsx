@@ -18,7 +18,7 @@ export function RecitersShelf() {
 
   return (
     <CarouselShelf
-      className='mt-2'
+      className='mt-5'
       title={TITLE}
       items={data}
       renderItem={ReciterCard}
