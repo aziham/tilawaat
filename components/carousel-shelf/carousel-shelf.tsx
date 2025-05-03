@@ -58,7 +58,9 @@ export function CarouselShelf<T>({
               key={index}
               className='pl-3 not-first:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/7 last:mr-30 md:last:mr-20'
             >
-              {renderItem(item)}
+              <div className='flex justify-center sm:p-3 sm:hover:bg-gray-200 transition-colors duration-100 ease-in-out rounded-md [&_img]:drop-shadow-md [&:hover_img]:drop-shadow-xl'>
+                {renderItem(item)}
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
