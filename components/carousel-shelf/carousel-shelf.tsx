@@ -40,10 +40,12 @@ export function CarouselShelf<T>({
           dragFree: true
         }}
         plugins={[wheelPlugin]}
-        className='w-full'
+        className='w-full mt-10'
       >
-        <div className='mx-5 my-3 flex justify-between items-center'>
-          <h2 className='text-xl font-medium'>{title}</h2>
+        <div className='mx-5 my-2 flex justify-between items-center'>
+          <h2 className='text-2xl font-semibold text-black/75 sm:ml-3'>
+            {title}
+          </h2>
           <div className='flex gap-2'>
             {action}
             <div className='flex gap-2 items-center'>
@@ -56,7 +58,7 @@ export function CarouselShelf<T>({
           {items.map((item: T, index: number) => (
             <CarouselItem
               key={index}
-              className='pl-3 not-first:pl-4 basis-1/3 sm:basis-1/4 lg:basis-1/5 xl:basis-1/7 last:mr-30 md:last:mr-20'
+              className='pl-3 basis-1/3 sm:basis-1/4 lg:basis-1/5 xl:basis-1/7 last:mr-30 md:last:mr-20'
             >
               <div className='flex justify-center group sm:p-3 sm:hover:bg-gray-200 transition-colors duration-100 ease-in-out rounded-md [&_img]:drop-shadow-md [&:hover_img]:drop-shadow-xl'>
                 {renderItem(item)}
