@@ -1,12 +1,13 @@
 'use client';
 
+import { useIsMobile } from '@/hooks/use-mobile';
 import { useGetNarrations } from '../../api/use-get-narrations';
 import { NarrationCard } from './narration-card';
 import { MoreButton } from '@/components/carousel-shelf';
 
-const TITLE = 'Browse By Narrations';
-
 export function NarrationsGrid() {
+  const TITLE = useIsMobile() ? 'Narrations' : 'Browse By Narrations';
+
   const { data, isLoading, isError, error } = useGetNarrations();
 
   if (isLoading) return <div>Loading...</div>;
