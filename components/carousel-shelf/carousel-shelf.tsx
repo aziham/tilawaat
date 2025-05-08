@@ -40,7 +40,7 @@ export function CarouselShelf<T>({
           dragFree: true
         }}
         plugins={[wheelPlugin]}
-        className='w-full mt-10'
+        className='w-full mt-8 sm:mt-10'
       >
         <div className='mx-5 my-2 flex justify-between items-center'>
           <h2 className='text-2xl font-semibold text-black/75 sm:ml-3'>

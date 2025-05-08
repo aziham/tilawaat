@@ -17,7 +17,7 @@ export function NarrationsGrid() {
   if (!data) return;
 
   return (
-    <div className='mt-10 sm:ml-3'>
+    <div className='mt-8 sm:mt-10 sm:ml-3'>
       <div className='ml-5 mr-6 mb-5 flex justify-between items-center'>
         <h2 className='text-2xl font-semibold text-black/75'>{TITLE}</h2>
         <MoreButton url='/narrations' label='Show All' />
