@@ -6,6 +6,7 @@ import { useGetReciters } from '../../api/use-get-reciters';
 import { ReciterCard } from './reciter-card';
 
 const TITLE = 'Reciters';
+const SUB_TITLE = 'Your favorite reciters and more';
 
 export function RecitersShelf() {
   const { data, isLoading, isError, error } = useGetReciters();
@@ -19,6 +20,7 @@ export function RecitersShelf() {
   return (
     <CarouselShelf
       title={TITLE}
+      subTitle={SUB_TITLE}
       items={data}
       renderItem={ReciterCard}
       action={<MoreButton url='/reciters' />}

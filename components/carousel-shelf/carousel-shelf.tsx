@@ -14,6 +14,7 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 interface CarouselShelfProps<T> {
   title: string;
+  subTitle?: string;
   items: T[];
   renderItem: (item: T) => React.ReactNode;
   action?: React.ReactNode;
@@ -22,6 +23,7 @@ interface CarouselShelfProps<T> {
 
 export function CarouselShelf<T>({
   title,
+  subTitle,
   items,
   renderItem,
   action,
@@ -43,9 +45,12 @@ export function CarouselShelf<T>({
         className='w-full mt-8 sm:mt-10'
       >
         <div className='mx-5 my-2 flex justify-between items-center'>
-          <h2 className='text-2xl font-semibold text-black/75 sm:ml-3'>
-            {title}
-          </h2>
+          <div className='sm:ml-3'>
+            <h2 className='text-2xl font-semibold text-black/75'>{title}</h2>
+            <h3 className='text-muted-foreground text-xs md:text-sm'>
+              {subTitle}
+            </h3>
+          </div>
           <div className='flex gap-2'>
             {action}
             <div className='flex gap-2 items-center'>

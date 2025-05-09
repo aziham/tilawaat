@@ -5,6 +5,7 @@ import { useGetFeaturedRecitations } from '../../api/use-get-featured-recitation
 import { RecitationCard } from './recitation-card';
 
 const TITLE = 'Featured Recitations';
+const SUB_TITLE = 'Handpicked by Tilawaat';
 
 export function RecitationsShelf() {
   const { data, isLoading, isError, error } = useGetFeaturedRecitations();
@@ -16,6 +17,11 @@ export function RecitationsShelf() {
   if (!data) return;
 
   return (
-    <CarouselShelf title={TITLE} items={data} renderItem={RecitationCard} />
+    <CarouselShelf
+      title={TITLE}
+      subTitle={SUB_TITLE}
+      items={data}
+      renderItem={RecitationCard}
+    />
   );
 }
