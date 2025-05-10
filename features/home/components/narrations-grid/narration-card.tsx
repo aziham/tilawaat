@@ -13,7 +13,7 @@ export function NarrationCard({ narration }: NarrationCardProps) {
       <div className='absolute inset-0 bg-current opacity-[4%] [mask-image:url("/narration-card-pattern.png")] group-hover:opacity-[2%]' />
 
       <div className='flex items-center gap-3 relative z-10'>
-        <div className='flex justify-center items-center font-semibold w-[50px] h-[50px] rounded-xl bg-slate-200 text-slate-600 group-hover:bg-slate-300 group-hover:text-slate-800'>
+        <div className='flex justify-center items-center font-semibold  min-w-[50px] min-h-[50px] rounded-xl bg-slate-200 text-slate-600 group-hover:bg-slate-300 group-hover:text-slate-800'>
           {String(narration.id).padStart(2, '0')}
         </div>
         <div className='flex flex-col'>
