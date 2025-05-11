@@ -28,10 +28,10 @@ export function RecitationCard(recitation: FeaturedRecitation) {
         </div>
       </div>
       <div className='mt-2'>
-        <h2 className='font-medium'>{recitation.chapter_name}</h2>
-        <h3 className='text-muted-foreground text-xs md:text-sm'>
+        <h4 className='font-medium'>{recitation.chapter_name}</h4>
+        <h5 className='text-muted-foreground text-xs md:text-sm'>
           {recitation.reciter.name}
-        </h3>
+        </h5>
       </div>
     </div>
   );

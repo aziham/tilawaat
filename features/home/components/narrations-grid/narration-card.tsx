@@ -17,8 +17,10 @@ export function NarrationCard({ narration }: NarrationCardProps) {
           {String(narration.id).padStart(2, '0')}
         </div>
         <div className='flex flex-col'>
-          <p>{narration.name}</p>
-          <p className='text-muted-foreground text-xs font-medium'>Narration</p>
+          <h4>{narration.name}</h4>
+          <h5 className='text-muted-foreground text-xs font-medium'>
+            Narration
+          </h5>
         </div>
       </div>
     </div>

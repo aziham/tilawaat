@@ -12,8 +12,8 @@ export function ReciterCard(reciter: Reciter) {
         className='rounded-full'
       />
       <div className='mt-2'>
-        <h2 className='font-medium'>{reciter.name}</h2>
-        <h3 className='text-muted-foreground text-xs md:text-sm'>Reciter</h3>
+        <h4 className='font-medium'>{reciter.name}</h4>
+        <h5 className='text-muted-foreground text-xs md:text-sm'>Reciter</h5>
       </div>
     </div>
   );
