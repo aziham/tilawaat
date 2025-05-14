@@ -1,15 +1,15 @@
-import ReciterCard from '@/components/reciter-card';
-import getReciters from '@/shared/helpers/get-reciters';
+import { PageBanner } from '@/components/blocks/page-banner';
+import { AudioLines } from 'lucide-react';
 
 async function RecitersPage() {
-  const reciters = await getReciters();
-
   return (
-    <div className='flex flex-col gap-5 m-5'>
-      {reciters.map((reciter) => (
-        <ReciterCard key={reciter.id} reciter={reciter} />
-      ))}
-    </div>
+    <>
+      <PageBanner
+        title='Reciters'
+        subTitle='Experience the timeless beauty of the Quran through the voices of the world’s reciters.'
+        icon={AudioLines}
+      />
+    </>
   );
 }
 
