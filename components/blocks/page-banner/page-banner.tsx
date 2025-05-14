@@ -20,6 +20,7 @@ export function PageBanner({ title, subTitle, icon: Icon }: PageBannerProps) {
       </div>
       <div className='absolute bottom-[1px] right-[1px] py-1 px-2	rounded-tl-sm bg-white/80 text-green-950 flex gap-3'>
         <Compass />
+        <span>|</span>
         <Icon />
       </div>
     </section>
