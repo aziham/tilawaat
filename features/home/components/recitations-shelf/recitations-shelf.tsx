@@ -1,6 +1,6 @@
 'use client';
 
-import { CarouselShelf } from '@/components/carousel-shelf';
+import { CarouselShelf } from '@/components/blocks/carousel-shelf';
 import { useGetFeaturedRecitations } from '../../api/use-get-featured-recitations';
 import { RecitationCard } from './recitation-card';
 

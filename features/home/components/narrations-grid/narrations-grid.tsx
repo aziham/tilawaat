@@ -2,7 +2,7 @@
 
 import { useGetNarrations } from '../../api/use-get-narrations';
 import { NarrationCard } from './narration-card';
-import { MoreButton } from '@/components/carousel-shelf';
+import { MoreButton } from '@/components/blocks/carousel-shelf';
 
 const TITLE = 'Narrations';
 const SUB_TITLE = 'Explore by your preferred narration';

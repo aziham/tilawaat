@@ -1,7 +1,7 @@
 'use client';
 
-import { CarouselShelf } from '@/components/carousel-shelf';
-import { MoreButton } from '@/components/carousel-shelf';
+import { CarouselShelf } from '@/components/blocks/carousel-shelf';
+import { MoreButton } from '@/components/blocks/carousel-shelf';
 import { useGetReciters } from '../../api/use-get-reciters';
 import { ReciterCard } from './reciter-card';
 
