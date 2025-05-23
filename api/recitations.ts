@@ -5,7 +5,7 @@ import type {
 } from './recitations.types';
 import { fetcher, BASE_URL } from './fetch';
 
-async function getMasahif() {
+export async function getMasahif() {
   const masahifData = await fetcher<Mushaf[]>('endpoint/masahif.json');
 
   return masahifData;
